@@ -11,6 +11,7 @@
   - **SSRF 深度拦截**：自动解算 DNS 封杀内网、回环、本地链路及云端元数据地址，防止内网穿透。
   - **图片 DNA 字节审计**：强行读取二进制魔术字节（Magic Bytes），彻底拦截木马/脚本伪装成的假图片。
   - **流式下载控制**：硬限制最大 30MB 缓冲区，免疫文件大弹头撑爆硬盘。
+  -**使用教程**：https://www.bilibili.com/video/BV1pWLt6sET9/?share_source=copy_web&vd_source=9198fc46d1ce8dbbf2f5c607bbc4f354
 
 ## 🚀 安装方法
 
