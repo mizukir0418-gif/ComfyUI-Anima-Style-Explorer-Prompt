@@ -84,11 +84,9 @@ function createAnimaSidebar() {
         try {
             const clipboardText = await navigator.clipboard.readText();
             let searchUrl = targetSite === "dobooru" ? "https://danbooru.donmai.us/" : "https://e-hentai.org/";
-
             if (clipboardText && clipboardText.trim() !== "") {
                 // 🛡️ 【安全符号洗涤器】彻底干掉开头的 @ 和所有地方的反斜杠 \
                 let baseCleanName = clipboardText.replace(/^@/, "").replace(/\\/g, "").trim();
-                
                 if (targetSite === "dobooru") {
                     let cleanNameDB = baseCleanName.replace(/\s+/g, "_");
                     searchUrl = `https://danbooru.donmai.us/posts?tags=${encodeURIComponent(cleanNameDB)}`;
@@ -131,7 +129,6 @@ function createAnimaSidebar() {
     btnFillNode.style = "width: 100%; background: #eab308; color: #1c1c1f; border: none; padding: 7px 0; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 12px; margin-top: 2px; transition: background 0.2s;";
     btnFillNode.onmouseenter = () => btnFillNode.style.background = "#ca8a04";
     btnFillNode.onmouseleave = () => btnFillNode.style.background = "#eab308";
-    
     btnFillNode.onclick = async () => {
         try {
             const clipboardText = await navigator.clipboard.readText();
@@ -148,7 +145,8 @@ function createAnimaSidebar() {
 
             for (const nodeId in canvas.selected_nodes) {
                 const node = canvas.selected_nodes[nodeId];
-                if (node.comfyClass === "AnimaPromptTemplateNode") {
+                // 🔄 此处已修改：只针对新拆分出来的 Template 1 节点生效
+                if (node.comfyClass === "Anima2BPromptTemplate1") {
                     let isFilled = false;
                     for (let i = 1; i <= 10; i++) {
                         const widget = node.widgets.find(w => w.name === `artist_${i}`);
@@ -172,7 +170,7 @@ function createAnimaSidebar() {
                     return;
                 }
             }
-            showToast("⚠️ 当前选中的节点不是 Anima 提示词模板节点！");
+            showToast("⚠️ 当前选中的节点不是 Anima 提示词模板 1 节点！");
         } catch (err) {
             showToast("❌ 无法读取剪贴板，请检查浏览器权限");
         }
@@ -271,7 +269,8 @@ app.registerExtension({
     },
 
     async nodeCreated(node) {
-        if (node.comfyClass === "AnimaPromptTemplateNode") {
+        // 🔄 此处已修改：让“打开风格浏览器”按钮精准渲染在新拆分出来的 Template 1 节点底部
+        if (node.comfyClass === "Anima2BPromptTemplate1") {
             node.addWidget(
                 "button", 
                 "🌐 打开风格浏览器 (Anima Explorer)", 
