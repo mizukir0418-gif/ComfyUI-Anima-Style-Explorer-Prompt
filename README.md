@@ -68,4 +68,4 @@ This plugin now provides a powerful 3-node ecosystem to fully manage your anime 
 Open your terminal in the `ComfyUI/custom_nodes/` directory and run:
 
 ```bash
-git clone [https://github.com/mizukir0418-gif/ComfyUI-Anima-Style-Explorer-Prompt.git](https://github.com/mizukir0418-gif/ComfyUI-Anima-Style-Explorer-Prompt.git)
+git clone https://github.com/mizukir0418-gif/ComfyUI-Anima-Style-Explorer-Prompt.git
