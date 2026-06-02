@@ -69,3 +69,6 @@ Open your terminal in the `ComfyUI/custom_nodes/` directory and run:
 
 ```bash
 git clone https://github.com/mizukir0418-gif/ComfyUI-Anima-Style-Explorer-Prompt.git
+
+
+workflow https://civitai.red/models/2640250?modelVersionId=2997669
