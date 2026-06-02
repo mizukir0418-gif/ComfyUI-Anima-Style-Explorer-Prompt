@@ -61,7 +61,8 @@ This plugin now provides a powerful 3-node ecosystem to fully manage your anime 
 > 
 > 💡 **Quick Loading**: Drag images from Danbooru directly into your ComfyUI "Load Image" node.
 
----
+------
+workflow https://civitai.red/models/2640250?modelVersionId=2997669
 
 ## 🛠️ Installation
 
@@ -70,5 +71,3 @@ Open your terminal in the `ComfyUI/custom_nodes/` directory and run:
 ```bash
 git clone https://github.com/mizukir0418-gif/ComfyUI-Anima-Style-Explorer-Prompt.git
 
----
-workflow https://civitai.red/models/2640250?modelVersionId=2997669
