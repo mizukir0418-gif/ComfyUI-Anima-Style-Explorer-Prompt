@@ -40,28 +40,7 @@ app.registerExtension({
             nodeType.prototype.onNodeCreated = function () {
                 if (onNodeCreated) onNodeCreated.apply(this, arguments);
                 
-                // ➕ 按钮：增加风格插槽
-                this.addWidget("button", "➕ Add Style Slot", null, () => {
-                    const currentSlots = this.inputs ? this.inputs.length : 0;
-                    if (currentSlots < 30) {
-                        const nextIdx = currentSlots + 1;
-                        this.addInput(`text_${nextIdx}`, "STRING");
-                        this.updateGroupLabels();
-                    }
-                });
-                
-                // ➖ 按钮：减少风格插槽
-                this.addWidget("button", "➖ Remove Style Slot", null, () => {
-                    const currentSlots = this.inputs ? this.inputs.length : 0;
-                    if (currentSlots > 1) {
-                        this.removeInput(currentSlots - 1);
-                        this.updateGroupLabels();
-                    }
-                });
-
-                if (!this.inputs || this.inputs.length === 0) {
-                    this.addInput("text_1", "STRING");
-                }
+                // ✨ 已在此处完全删除了 ➕ Add Style Slot 和 ➖ Remove Style Slot 按钮
                 
                 this.updateGroupLabels();
             };
@@ -69,7 +48,6 @@ app.registerExtension({
             // 核心刷新：更新插槽名称与原生选择框选项
             nodeType.prototype.updateGroupLabels = function () {
                 if (!this.inputs || !this.graph) return;
-                
                 let comboOptions = [];
                 
                 for (let i = 0; i < this.inputs.length; i++) {
@@ -78,7 +56,6 @@ app.registerExtension({
                     inputSlot.name = inputName; 
                     
                     let groupName = "Unconnected";
-                    
                     if (inputSlot.link !== null) {
                         const link = this.graph.links[inputSlot.link];
                         if (link) {
@@ -110,7 +87,6 @@ app.registerExtension({
             // 一键执行组的亮起/变灰控制
             nodeType.prototype.applyGroupBypassLogic = function (selectedValue) {
                 if (!this.graph || !this.inputs || !selectedValue) return;
-                
                 const activeIdx = parseInt(String(selectedValue).split(":")[0]);
                 if (isNaN(activeIdx)) return;
                 
